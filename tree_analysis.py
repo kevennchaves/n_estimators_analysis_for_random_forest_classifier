@@ -21,6 +21,7 @@ aux2 = 0.05
 best = 0
 score = 0
 p = 0
+
 while(i < 200):
     i += 1
         
