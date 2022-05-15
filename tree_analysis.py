@@ -1,4 +1,3 @@
-#importando bibliotecas necessárias
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 import matplotlib.pyplot as plt
@@ -22,7 +21,7 @@ aux2 = 0.05
 best = 0
 score = 0
 p = 0
-while(i < 500):
+while(i < 200):
     i += 1
         
     aux = best
@@ -56,6 +55,5 @@ while(i < 500):
           '\nscore: ', p,
           '\nbest: ', best,
           '\nworst: ', me,
-          #'\nworst-generation', pg,
           '\nbest-generation(n_estimators): ',w,
           '\ngeneration: ', i)
