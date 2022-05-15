@@ -167,8 +167,3 @@ The solution is a best-generation, that was best amount of tree for used in rand
 But its possible to take advantage of the idea to use in different datasets or situations
 
 # THANK YOU
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 1b5f147d1b3c0652021714990f497d347f31ccbb
