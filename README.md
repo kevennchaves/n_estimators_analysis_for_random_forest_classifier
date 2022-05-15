@@ -1,4 +1,4 @@
-# n_estimators_analysis_for_better_use_of_random_forest_in_diabetes_dataset
+# n_estimators_analysis_for_random_forest_classifier
 n_estimators is a parameter from machine learning techniques, called Random Forest. It's a of the techniques more used for programmers.
 For resolve problem of searching of best number of tree (n_estimators), in analysis is used of types manipulation for become in a result.
 
