@@ -2,6 +2,8 @@
 n_estimators is a parameter from machine learning techniques, called Random Forest. It's a of the techniques more used for programmers.
 For resolve problem of searching of best number of tree (n_estimators), in analysis is used of types manipulation for become in a result.
 
+ Author: KEVEN HENRIQUE MIRANDA CHAVES
+
 # Introduction
 ## _Troubleshooting_
 
