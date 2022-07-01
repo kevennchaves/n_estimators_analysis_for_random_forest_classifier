@@ -1,60 +1,42 @@
 import pandas as pd
-from sklearn.ensemble import RandomForestClassifier
-import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
-import statistics as sts
+from fit import Fit
 
-df = pd.read_csv('/home/keven/Documents/Anaconda-spider/datasets/archive/diabetes.csv')
+
+j = 1
+r = 1
+e = list()
+k = list()
+melhor = 0
+anterior = 0
+scores = list()
+random_state = 1234
+
+df = pd.read_csv('/home/keven/Documents/PythonScripts/n_estimators analysis/diabetes.csv')
 x = df.drop(['Outcome'], axis=1)
 y = df['Outcome']
-
 X_train, X_test, y_train, y_test = train_test_split(x,y, test_size=0.3)
 
-scores = []
-k = []
-i=0
-w=0
-me = 0
-aux = 0
-aux2 = 0.05
-best = 0
-score = 0
-p = 0
+calculo = Fit()
 
-while(i < 200):
-    i += 1
+if __name__ == '__main__':    
+    for i in range(1,50):
+        anterior = melhor
+        p = calculo.forest(X_train, X_test, y_train, y_test, i, random_state)     
         
-    aux = best
-
-    forest = RandomForestClassifier(n_estimators=i, n_jobs=-1 ,random_state=(0))
-    forest.fit(X_train, y_train)
-    y_pred = forest.predict(X_test)
-    
-    scores.append(accuracy_score(y_test, y_pred))
-    k.append(i)   
-    
-    p = accuracy_score(y_test, y_pred)
-    
-    if (p > aux):
-        best = p
-        w = i
-        if (aux < aux2):
-            me = p
-            aux2 = p
+        melhor = calculo.melhor(p, anterior)
+        pior = calculo.pior(p, r)
+        ideal = calculo.melhor_estimador(p, anterior, i)
+        geracao = calculo.generation(i)     
+        e.append(calculo.error(p))
+        k.append(i)
+        scores.append(p)
+        r = pior  
+        
+        if ideal == i:
+            j = i
         else:
-            me = aux2
-    else:
-        best = aux
-        
-                    
-    plt.plot(k, scores)
-    plt.show()
-    
-    print('\n\nmedian: ', sts.median(scores),
-          '\nmean: ', sts.mean(scores),
-          '\nscore: ', p,
-          '\nbest: ', best,
-          '\nworst: ', me,
-          '\nbest-generation(n_estimators): ',w,
-          '\ngeneration: ', i)
+            j = j        
+  
+    calculo.plots(k, scores, e)
+    calculo.__str__(scores, p, melhor, r, j, geracao)    
